@@ -2,7 +2,7 @@
 ## Встановлення 
 `npm i` - Встановлення node модулів
 
-[`https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=uk`](#tampermonkey) - Встановлення Tampermonkey 
+*[tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=uk)* - Встановлення Tampermonkey 
 > В каталозі tampermonkey знаходяться наглядачі для збору інформації
 > Їх необхідно встановити в розширення браузеру (Встановлювати окремо)
 
