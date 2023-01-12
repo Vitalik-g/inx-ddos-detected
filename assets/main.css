@@ -1,0 +1,20 @@
+body{
+    background-color: #B993A6;
+}
+.alert-ddos{
+    text-align: center;
+}
+.blink-bg{
+    animation: blinkingBackground .5s infinite;
+}
+@keyframes blinkingBackground{
+    0%		{ background-color: #ff0000;}
+    75%	    { background-color: #2600ff;}
+    100%	{ background-color: #ff0000;}
+}
+.min-200-px{
+    min-height: 200px;
+}
+.hidden{
+    display: none;
+}
