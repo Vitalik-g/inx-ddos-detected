@@ -3,7 +3,6 @@ const route = Router();
 const sshDDos = require('../modules/ssh-ddos').execCommand
 const sshCache = require('../modules/ssh-cache').execCommand
 
-const open = require('open');
 
 route.post('/grafana/update',async (req,res)=>{
     global['grafana'] = req.body.data
