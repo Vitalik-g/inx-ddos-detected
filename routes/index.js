@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const route = Router();
-const ssh = require('../modules/ssh').execCommand
+const sshDDos = require('../modules/ssh-ddos').execCommand
+const sshCache = require('../modules/ssh-cache').execCommand
 
 const open = require('open');
 
@@ -15,9 +16,13 @@ route.get('/',async (req,res)=>{
     res.render('index')
 })
 
-route.post('/ssh',async (req,res)=>{
+route.post('/ssh-ddos',async (req,res)=>{
     console.log(req.body.data);
-    ssh(res,req.body.data)
+    sshDDos(res,req.body.data)
+})
+route.post('/ssh-cache',async (req,res)=>{
+    console.log(req.body.data);
+    sshCache(res)
 })
 
 module.exports = route

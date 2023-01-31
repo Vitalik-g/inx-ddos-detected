@@ -4,9 +4,9 @@ const ssh = new NodeSSH()
 
 function execCommand(res,command){
     ssh.connect({
-        host: '23.22.208.152',
-        username: 'ec2-user',
-        privateKeyPath: '/home/acronis/.ssh/inx_coloudflare'
+        host: conf.sshIP,
+        username: conf.sshUser,
+        privateKeyPath: conf.sshKey
       }).then(()=>{
           ssh.execCommand('./under_attack.sh '+ command, { cwd:'/home/ec2-user' }).then(function(result) {
               res.send(result.stdout)

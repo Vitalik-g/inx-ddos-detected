@@ -29,9 +29,24 @@ function reloadCpu(){
     req.open("GET", "/grafana");
     req.send();
 }
-function ssh(event){
+function sshDdos(event){
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", '/ssh', true);
+    xhr.open("POST", '/ssh-ddos', true);
+
+    //Send the proper header information along with the request
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xhr.onreadystatechange = () => { // Call a function when the state changes.
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            $("#ssh-response").text(xhr.responseText)
+            
+        }
+    }
+    xhr.send("data="+event);
+}
+function sshCache(event){
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", '/ssh-cache', true);
 
     //Send the proper header information along with the request
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -45,18 +60,20 @@ function ssh(event){
     xhr.send("data="+event);
 }
 
-
 reloadCpu()
-$('#ssh-status').on('click',()=>{ssh('status')})
+$('#ssh-status').on('click',()=>{sshDdos('status')})
 $('#ssh-enable').on('click',()=>{
-    ssh('enable');
+    sshDdos('enable');
     $('#textareas-noc-and-devops').removeClass('hidden')
     $('#textarea-noc-support').val('@channel email inoc@inx.co received a message about ddos, cloudflare changed its status to "under_attack"')
     $('#textarea-devops').val('Привіт\r\nНа нашу почту прийшло повідомлення про ддос\r\nВже переключив cloudflare в статус under_attack \r\n'+cpuhText)
 })
 $('#ssh-disable').on('click',()=>{
-    ssh('disable')
+    sshDdos('disable')
     $('#textarea-noc-support').val('I`ll change Cloudflare status to "medium" to see if the attack is complete')
+})
+$('#ssh-cache-clear').on('click',()=>{
+    sshCache('clear')
 })
 $('#time-detect').text(`${new Date().getHours()}:${new Date().getMinutes()}`)
 
